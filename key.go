@@ -38,8 +38,8 @@ var KeyTypes = []int{
 	Secp256k1,
 }
 
-type PubKeyUnmarshaller = func(data []byte) (PubKey, error)
-type PrivKeyUnmarshaller = func(data []byte) (PrivKey, error)
+type PubKeyUnmarshaller func(data []byte) (PubKey, error)
+type PrivKeyUnmarshaller func(data []byte) (PrivKey, error)
 
 var PubKeyUnmarshallers = map[pb.KeyType]PubKeyUnmarshaller{
 	pb.KeyType_RSA:       UnmarshalRsaPublicKey,
